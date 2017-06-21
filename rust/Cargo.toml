@@ -1,0 +1,11 @@
+[package]
+name = "monte-carlo-rust"
+version = "0.1.0"
+authors = ["Nate Mara <nate.mara@kroger.com> <nathan.mara@kroger.com>"]
+
+[dependencies]
+rand = "0.3"
+rayon = "0.8.1"
+
+[profile.release]
+debug = true
