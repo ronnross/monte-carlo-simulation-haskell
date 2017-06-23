@@ -35,14 +35,6 @@ fn main() {
     println!("{}", pi(limit));
 }
 
-fn average_weights(points: &[Point]) -> f64 {
-    let mut sum = 0;
-    for point in points {
-        sum += point.weight();
-    }
-    sum as f64 / points.len() as f64
-}
-
 fn pi(limit: usize) -> f64 {
     let mut points = Vec::with_capacity(limit);
     let mut gen = get_rng();
@@ -51,7 +43,9 @@ fn pi(limit: usize) -> f64 {
         points.push(Point::random(&mut gen));
     }
 
-    average_weights(&points) * 4.0
+    let total_weight = points.iter().fold(0, |x, y| x + y.weight()) as f64;
+
+    total_weight / points.len() as f64 * 4.0
 }
 
 fn get_rng() -> rand::XorShiftRng {
