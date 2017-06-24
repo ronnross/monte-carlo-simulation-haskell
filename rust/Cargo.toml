@@ -1,5 +1,5 @@
 [package]
-name = "monte-carlo-rust"
+name = "monte_carlo"
 version = "0.1.0"
 authors = ["Nate Mara <nate.mara@kroger.com> <nathan.mara@kroger.com>"]
 
