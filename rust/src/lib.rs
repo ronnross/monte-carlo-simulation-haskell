@@ -17,11 +17,11 @@ impl Point {
         }
     }
 
-    fn weight(&self) -> i64 {
+    fn weight(&self) -> f64 {
         if (self.x * self.x + self.y * self.y).sqrt() <= 1.0 {
-            1
+            1.0
         } else {
-            0
+            0.0
         }
     }
 }
@@ -29,13 +29,11 @@ impl Point {
 pub fn pi<T>(gen: &mut T, limit: usize) -> f64
     where T: Rng
 {
-    let mut points = Vec::with_capacity(limit);
+    let mut total_weight = 0.0;
 
     for _ in 0..limit {
-        points.push(Point::random(gen));
+        total_weight += Point::random(gen).weight();
     }
 
-    let total_weight = points.iter().fold(0, |x, y| x + y.weight()) as f64;
-
-    total_weight / points.len() as f64 * 4.0
+    total_weight / limit as f64 * 4.0
 }
